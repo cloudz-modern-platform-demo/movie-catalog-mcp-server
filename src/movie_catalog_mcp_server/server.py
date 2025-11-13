@@ -2,14 +2,13 @@
 
 import logging
 
-from httpx import Response
 from mcp.server.fastmcp import FastMCP
-from mcp.types import TextContent, CallToolResult
+from mcp.types import CallToolResult, TextContent
 
-from movie_catalog_mcp_server.setting import mcp_server_settings, api_server_settings
-from movie_catalog_mcp_server.http_client import create_client, get_response
+from movie_catalog_mcp_server.http_client import create_client
+from movie_catalog_mcp_server.setting import api_server_settings, mcp_server_settings
 
-logger = logging.getLogger("appLogger")
+logger = logging.getLogger(__name__)
 
 
 def create_mcp_server():

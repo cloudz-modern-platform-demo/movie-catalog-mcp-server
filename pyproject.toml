@@ -17,7 +17,7 @@ dependencies = [
 [project.scripts]
 movie-catalog-mcp-server = "movie_catalog_mcp_server:main"
 movie-catalog-fastmcp-server = "movie_catalog_mcp_server:fastmcp_main"
-movie-catalog-cli-mcp-server = "movie_catalog_mcp_server:cli_main"
+movie-catalog-stdio-mcp-server = "movie_catalog_mcp_server:stdio_main"
 
 
 [build-system]
