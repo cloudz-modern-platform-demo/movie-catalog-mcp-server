@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "movie-catalog": {
+      "command": "uv",
+      "args": [
+        "run",
+        "movie-catalog-cli-mcp-server"
+      ],
+      "env": {}
+    }
+  }
+}
