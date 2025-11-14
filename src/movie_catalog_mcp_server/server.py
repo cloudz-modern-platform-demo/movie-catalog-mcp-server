@@ -20,14 +20,18 @@ def create_mcp_server():
         port=mcp_server_settings.port,
     )
 
-    client = create_client(api_server_settings.server_url)
+    http_client = create_client(api_server_settings.server_url)
 
     # Add a simple tool to demonstrate the server
-    @mcp.tool()
-    async def hello(name: str = "World") -> CallToolResult:
+    @mcp.tool(
+        name="get_catalog",
+        description="Get the catalog of movies.",
+        structured_output=True,
+    )
+    async def get_catalog(name: str = "World") -> CallToolResult:
         """Greet someone by name."""
         try:
-            result = await client.get(
+            result = await http_client.get(
                 f"{api_server_settings.root_path}/hello", params={"name": name}
             )
 

@@ -39,16 +39,3 @@ class ApiServerSettings(BaseSettings):
 
 
 api_server_settings = ApiServerSettings()
-
-
-class LoggerSettings(BaseSettings):
-    """Settings for Logger."""
-
-    model_config: SettingsConfigDict = SettingsConfigDict(
-        env_prefix="LOG_", env_file=".env", extra="ignore"
-    )
-    config_file: str = "logging.conf"
-    level: str = "INFO"
-
-
-logger_settings = LoggerSettings()

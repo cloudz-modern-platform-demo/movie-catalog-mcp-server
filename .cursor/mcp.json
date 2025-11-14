@@ -1,6 +1,9 @@
 {
   "mcpServers": {
-    "movie-catalog": {
+    "movie-catalog-mcp-server": {
+      "url": "http://localhost:8100/mcp"
+    },
+    "movie-catalog-stdio-mcp-server": {
       "command": "uv",
       "args": [
         "run",
