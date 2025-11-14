@@ -34,10 +34,15 @@ def create_mcp_server():
             result = await http_client.get(
                 f"{api_server_settings.root_path}/hello", params={"name": name}
             )
+            # Wrap list response in a dictionary for structuredContent
+            if isinstance(result, list):
+                structured_content = {"catalogs": result}
+            else:
+                structured_content = result
 
             return CallToolResult(
                 content=[TextContent(type="text", text=f"{result}")],
-                structuredContent=result,
+                structuredContent=structured_content,
             )
         except Exception as e:
             logger.error(f"Error greeting {name}: {e}")

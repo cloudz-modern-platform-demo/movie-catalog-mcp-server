@@ -7,11 +7,37 @@ MCP (Model Context Protocol) server for movie catalog information with dual arch
 - Python >= 3.12
 - uv (Python package manager)
 
-## Installation
 
-Install all project dependencies using `uv`:
+## Quick Start
+
+### 1. Install uv
+
+If you don't have `uv` installed yet:
+
+**macOS/Linux:**
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+**Windows:**
+```powershell
+powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
+
+Or install via pip:
+```bash
+pip install uv
+```
+
+### 2. Install Dependencies
+
+Clone the repository and install dependencies:
 
 ```bash
+# Navigate to project directory
+cd movie-catalog-mcp-server
+
+# Install dependencies with uv (automatically creates virtual environment)
 uv sync
 ```
 
@@ -121,6 +147,21 @@ API_OPENAPI_PATH=/openapi.json          # OpenAPI spec path
    uv run mcp dev src/movie_catalog_mcp_server/inspector_run.py
    ```
 
-## Architecture
-
-See [CLAUDE.md](./CLAUDE.md) for detailed architecture documentation.
+5. **MCP config json**:
+   ```json
+   {
+      "mcpServers": {
+         "movie-catalog-mcp-server": {
+            "url": "http://localhost:8100/mcp"
+         },
+         "movie-catalog-stdio-mcp-server": {
+            "command": "uv",
+            "args": [
+            "run",
+            "movie-catalog-stdio-mcp-server"
+            ],
+            "env": {}
+         }
+      }
+   }
+   ```
