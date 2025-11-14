@@ -24,16 +24,17 @@ def create_mcp_server():
 
     # Add a simple tool to demonstrate the server
     @mcp.tool(
-        name="get_catalog",
-        description="Get the catalog of movies.",
+        name="get_catalogs",
+        description="Get the catalogs of movies.",
         structured_output=True,
     )
-    async def get_catalog(name: str = "World") -> CallToolResult:
+    async def get_catalogs(name: str = "World") -> CallToolResult:
         """Greet someone by name."""
         try:
             result = await http_client.get(
-                f"{api_server_settings.root_path}/hello", params={"name": name}
+                f"{api_server_settings.root_path}/catalogs", params={"name": name}
             )
+
             # Wrap list response in a dictionary for structuredContent
             if isinstance(result, list):
                 structured_content = {"catalogs": result}
