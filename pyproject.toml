@@ -8,7 +8,6 @@ authors = [
 ]
 requires-python = ">=3.12"
 dependencies = [
-    "colorlog>=6.10.1",
     "fastmcp>=2.13.0.2",
     "httpx>=0.28.1",
     "mcp[cli]>=1.21.0",

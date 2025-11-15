@@ -49,6 +49,32 @@ def create_mcp_server():
                 content=[TextContent(type="text", text=f"Error: {e}")],
             )
 
+    @mcp.tool(
+        name="get_theater_by_id",
+        description="Get the theater by id.",
+        structured_output=True,
+    )
+    async def get_theater_by_id(theater_id: str) -> CallToolResult:
+        """Get the theaters of movies."""
+        try:
+            result = await http_client.get(f"/theaters/{theater_id}", params={})
+
+            # Wrap list response in a dictionary for structuredContent
+            if isinstance(result, list):
+                structured_content = {"theaters": result}
+            else:
+                structured_content = result
+
+            return CallToolResult(
+                content=[TextContent(type="text", text=f"{result}")],
+                structuredContent=structured_content,
+            )
+        except Exception as e:
+            logger.error(f"Error getting theaters: {e}")
+            return CallToolResult(
+                content=[TextContent(type="text", text=f"Error: {e}")],
+            )
+
     logger.info(f"Initialized {mcp_server_settings.name}...")
 
     return mcp
