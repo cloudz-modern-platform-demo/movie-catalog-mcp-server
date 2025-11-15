@@ -31,9 +31,7 @@ def create_mcp_server():
     async def get_theaters() -> CallToolResult:
         """Get the theaters of movies."""
         try:
-            result = await http_client.get(
-                f"{api_server_settings.root_path}/theaters", params={}
-            )
+            result = await http_client.get("/theaters", params={})
 
             # Wrap list response in a dictionary for structuredContent
             if isinstance(result, list):
