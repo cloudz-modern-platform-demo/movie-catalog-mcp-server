@@ -24,20 +24,20 @@ def create_mcp_server():
 
     # Add a simple tool to demonstrate the server
     @mcp.tool(
-        name="get_catalogs",
-        description="Get the catalogs of movies.",
+        name="get_theaters",
+        description="Get the theaters of movies.",
         structured_output=True,
     )
-    async def get_catalogs(name: str = "World") -> CallToolResult:
-        """Greet someone by name."""
+    async def get_theaters() -> CallToolResult:
+        """Get the theaters of movies."""
         try:
             result = await http_client.get(
-                f"{api_server_settings.root_path}/catalogs", params={"name": name}
+                f"{api_server_settings.root_path}/theaters", params={}
             )
 
             # Wrap list response in a dictionary for structuredContent
             if isinstance(result, list):
-                structured_content = {"catalogs": result}
+                structured_content = {"theaters": result}
             else:
                 structured_content = result
 
@@ -46,7 +46,7 @@ def create_mcp_server():
                 structuredContent=structured_content,
             )
         except Exception as e:
-            logger.error(f"Error greeting {name}: {e}")
+            logger.error(f"Error getting theaters: {e}")
             return CallToolResult(
                 content=[TextContent(type="text", text=f"Error: {e}")],
             )

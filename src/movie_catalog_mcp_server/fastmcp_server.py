@@ -24,17 +24,10 @@ def create_fastmcp_server() -> FastMCP:
         openapi_spec=openapi_spec,
         client=client,
         name="Movie Catalog MCP Server",
-        # mcp_names={
-        #     "hello_api_v1_hello_get": "get_catalog",
-        #     "hello_post_api_v1_hello_post": "create_post",
-        #     "hello_put_api_v1_hello": "update_post",
-        #     "hello_delete_api_v1_hello": "delete_post",
-        # },
         route_maps=[
-            RouteMap(methods=["GET"], pattern=r"^/api/v1/.*", mcp_type=MCPType.TOOL),
             RouteMap(
-                methods=["POST"],
-                pattern=r"^/api/v1/.*",
+                methods=["POST", "PUT", "DELETE"],
+                pattern=r"^/movies/.*",
                 mcp_type=MCPType.EXCLUDE,
             ),
         ],
