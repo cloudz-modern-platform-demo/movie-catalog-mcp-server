@@ -23,7 +23,7 @@ class ApiServerSettings(BaseSettings):
     model_config: SettingsConfigDict = SettingsConfigDict(
         env_prefix="API_", env_file=".env", extra="ignore"
     )
-    server_url: str = "http://localhost:8000/"
+    server_url: str = "http://localhost:8000"
     root_path: str = "/api/v1"
     openapi_path: str = "/openapi.json"
 
