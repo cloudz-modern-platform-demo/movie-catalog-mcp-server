@@ -2,6 +2,6 @@ name: movie-ticketing-mcp-server
 version: 0.0.1
 schema: v1
 mcpServers:
-  - name: movie-ticketing-mcp-server
-    url: https://kilsoo-sk-edu-kilsoo-test2p8100nsk-edu.remote.ags-rde.skamdp.org/mcp
+  - name: movie-catalog-mcp-server
+    url: https://{your-domain}.remote.ags-rde.skamdp.org/mcp
     env: {}
