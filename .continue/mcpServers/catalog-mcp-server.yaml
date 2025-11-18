@@ -1,4 +1,4 @@
-name: movie-ticketing-mcp-server
+name: movie-catalog-mcp-server
 version: 0.0.1
 schema: v1
 mcpServers:
