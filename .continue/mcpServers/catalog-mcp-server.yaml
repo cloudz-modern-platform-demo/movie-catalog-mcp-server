@@ -3,5 +3,5 @@ version: 0.0.1
 schema: v1
 mcpServers:
   - name: movie-catalog-mcp-server
-    url: https://{your-domain}.remote.ags-rde.skamdp.org/mcp
+    url: {your-domain}/mcp
     env: {}
